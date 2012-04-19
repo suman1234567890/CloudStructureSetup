@@ -1,0 +1,9 @@
+G:\4thproject\TestSocket\TestSocket\bin\Debug\TestSocket.exe
+G:\4thproject\TestSocket\TestSocket\bin\Debug\TestSocket.pdb
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\TestSocket.Form1.resources
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\TestSocket.Properties.Resources.resources
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\GenerateResource.read.1.tlog
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\GenerateResource.write.1.tlog
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\TestSocket.exe
+G:\4thproject\TestSocket\TestSocket\obj\x86\Debug\TestSocket.pdb

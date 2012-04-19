@@ -1,0 +1,6 @@
+G:\4thproject\Manager\Manager\bin\Manager.dll
+G:\4thproject\Manager\Manager\bin\Manager.pdb
+G:\4thproject\Manager\Manager\obj\Debug\ResolveAssemblyReference.cache
+G:\4thproject\Manager\Manager\obj\Debug\Manager.dll
+G:\4thproject\Manager\Manager\obj\Debug\Manager.pdb
+G:\4thproject\Manager\Manager\bin\MySql.Data.dll

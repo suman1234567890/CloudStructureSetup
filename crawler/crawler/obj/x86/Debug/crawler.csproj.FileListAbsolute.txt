@@ -1,0 +1,8 @@
+G:\4thproject\crawler\crawler\bin\Debug\crawler.exe
+G:\4thproject\crawler\crawler\bin\Debug\crawler.pdb
+G:\4thproject\crawler\crawler\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\4thproject\crawler\crawler\obj\x86\Debug\crawler.Employee.EmployeeGUI.resources
+G:\4thproject\crawler\crawler\obj\x86\Debug\GenerateResource.read.1.tlog
+G:\4thproject\crawler\crawler\obj\x86\Debug\GenerateResource.write.1.tlog
+G:\4thproject\crawler\crawler\obj\x86\Debug\crawler.exe
+G:\4thproject\crawler\crawler\obj\x86\Debug\crawler.pdb

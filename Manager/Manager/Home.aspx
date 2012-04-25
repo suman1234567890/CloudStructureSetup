@@ -57,6 +57,12 @@
             </tr>
             
         </table>
+        <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+        <p>
+            <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
+                Text="View Result" />
+        </p>
+        <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

@@ -98,7 +98,7 @@ class DataSend
         }
         catch (SocketException e)
         {
-            Console.WriteLine("Problem with receiving");
+            Console.WriteLine("Problem with receiving error: "+e);
         }
         sock.Close();
         Static_Lock.lockCondition1 = false;

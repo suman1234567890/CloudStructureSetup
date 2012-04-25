@@ -15,9 +15,10 @@ class ManagerRequestSend
             Console.WriteLine("strt");
             DataReceiveManager dr = new DataReceiveManager("5212");
             String ipaddress = dr.ipaddress;
-            StackIpaddress.ManagerIpAddress.Enqueue(ipaddress);
+            StackIpaddress.ManagerIpAddress.Enqueue(dr.getData());
             Console.WriteLine(ipaddress);
-            employeeGUI.AddToListBoxManager(ipaddress);
+            employeeGUI.AddToListBoxManager(dr.getData());
+            employeeGUI.AddToStatus("Data Received : '"+dr.getData()+"' from "+ipaddress);
         }
         throw new NotImplementedException();
     }

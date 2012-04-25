@@ -27,10 +27,13 @@ namespace crawler.Employee
             l = listBox2;
             Thread t1 = new Thread(new ThreadStart(temp1));
             Thread t2 = new Thread(new ThreadStart(temp2));
+            Thread t3 = new Thread(new ThreadStart(temp3));
             t1.IsBackground = true;
             t1.Start();
             t2.IsBackground = true;
             t2.Start();
+            t3.IsBackground = true;
+            t3.Start();
 
 
         }
@@ -47,13 +50,25 @@ namespace crawler.Employee
             
             ManagerRequestSend m = new ManagerRequestSend();
             
-            Console.Write("Thread 2started");
+            Console.Write("Thread 2 started");
             new Thread(new ThreadStart(m.startTread(this)));
+        }
+        void temp3()
+        {
+            Console.Write("Thread 3 started");
+            Allocate a = new Allocate();
+            new Thread(new ThreadStart(a.startTread(this)));
         }
         public void AddToListBoxClerk(String oo)
         {
             Invoke(new MethodInvoker(
                            delegate { listBox2.Items.Add(oo); }
+                           ));
+        }
+        public void RemoveToListBoxClerk(String oo)
+        {
+            Invoke(new MethodInvoker(
+                           delegate { listBox2.Items.Remove(oo); }
                            ));
         }
         public void AddToListBoxManager(String oo)
@@ -62,7 +77,18 @@ namespace crawler.Employee
                            delegate { listBox1.Items.Add(oo); }
                            ));
         }
-
+        public void RemoveToListBoxManager(String oo)
+        {
+            Invoke(new MethodInvoker(
+                           delegate { listBox1.Items.Remove(oo); }
+                           ));
+        }
+        public void AddToStatus(String oo)
+        {
+            Invoke(new MethodInvoker(
+                           delegate { textBox1.Text = oo; }
+                           ));
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 

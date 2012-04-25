@@ -45,7 +45,7 @@ namespace clerk
         public void AddToTextBox(String oo)
         {
             Invoke(new MethodInvoker(
-                           delegate { textBox2.Text = oo; }
+                           delegate { textBox2.Text += oo; }
                            ));
         }
         public string getIp()

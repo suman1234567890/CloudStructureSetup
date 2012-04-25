@@ -6,3 +6,4 @@ G:\4thproject\clerk\clerk\obj\x86\Debug\GenerateResource.read.1.tlog
 G:\4thproject\clerk\clerk\obj\x86\Debug\GenerateResource.write.1.tlog
 G:\4thproject\clerk\clerk\obj\x86\Debug\clerk.exe
 G:\4thproject\clerk\clerk\obj\x86\Debug\clerk.pdb
+G:\4thproject\clerk\clerk\bin\Debug\MySql.Data.dll

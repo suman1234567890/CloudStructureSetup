@@ -40,7 +40,7 @@ class DataReceive
         }
         catch (SocketException e)
         {
-            Console.WriteLine("Problem with receiving");
+            Console.WriteLine("Problem with receiving error:"+e);
         }
         
         //Console.WriteLine("Disconnected from {0}+1st", clientep.Address);

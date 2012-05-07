@@ -1,10 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Manager.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Debug="true" CodeBehind="Home.aspx.cs" Inherits="Manager.Home" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        #TextArea1
+        {
+            width: 707px;
+            height: 280px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,21 +21,13 @@
         <asp:Label ID="Label2" runat="server" Text="Number (1) :"></asp:Label>
                 </td>
                 <td>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Width="417px" Height="162px" 
+                        TextMode="MultiLine"></asp:TextBox>
+                    
                 </td>
-                <td>
-                    &nbsp;</td>
+                
             </tr>
-            <tr>
-                <td>
-        <asp:Label ID="Label1" runat="server" Text="Number (2) :"></asp:Label>
-                </td>
-                <td>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    &nbsp;</td>
-            </tr>
+            
             <tr>
                 <td>
                     <asp:Label ID="Label3" runat="server" Text="Category"></asp:Label>
@@ -42,8 +41,7 @@
                         <asp:ListItem>Div</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td>
-                    &nbsp;</td>
+                
             </tr>
             <tr>
                 <td>
@@ -52,8 +50,7 @@
                 <td>
                     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
                 </td>
-                <td>
-                    &nbsp;</td>
+                
             </tr>
             
         </table>

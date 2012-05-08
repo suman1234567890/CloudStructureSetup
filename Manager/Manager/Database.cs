@@ -57,7 +57,7 @@ class Database
             string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password=internet;";
             MySqlCommand cmd;
             MySqlDataReader rdr;
-            //string sql = "";
+            
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
             

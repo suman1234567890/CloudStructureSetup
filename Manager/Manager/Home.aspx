@@ -35,10 +35,6 @@
                 <td>
                     &nbsp;
                     <asp:DropDownList ID="DropDownList1" runat="server">
-                        <asp:ListItem Value="Sum">Sum</asp:ListItem>
-                        <asp:ListItem>Sub</asp:ListItem>
-                        <asp:ListItem>Multi</asp:ListItem>
-                        <asp:ListItem>Div</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 

@@ -14,15 +14,27 @@ namespace Manager
         //String type2ip = "172.16.52.126";
         //String type3ip = "172.16.52.126";
         //String type4ip = "172.16.52.126";
-        String type1ip = "127.0.0.1";
-        String type2ip = "127.0.0.1";
-        String type3ip = "127.0.0.1";
-        String type4ip = "127.0.0.1";
+        String type1ip = "127.0.0.2";
+        //String type2ip = "127.0.0.1";
+        //String type3ip = "127.0.0.1";
+        //String type4ip = "127.0.0.1";
         
         static int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             Button2.Visible = false;
+            Database db = new Database(this);
+            MySqlDataReader rdr=db.SelectDataFromDatabase("select name from compilertype");
+            if (rdr.HasRows)
+            {
+
+                while (rdr.Read())
+                {
+                    //Label6.Text = "Data Result" + rdr.GetString(0);
+                    DropDownList1.Items.Add(rdr.GetString(0));
+                }
+                
+            }
         }
         public void Status( String s)
         {
@@ -32,11 +44,51 @@ namespace Manager
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Database db = new Database(this);
+            MySqlDataReader rdr = null;
+            rdr = db.SelectDataFromDatabase("select ipaddress from compilertype where name='" + DropDownList1.SelectedItem.Text + "'");
+            if (rdr.HasRows)
+            {
+
+                if (rdr.Read())
+                {
+                    //Label6.Text = "Data Result" + rdr.GetString(0);
+                    //DropDownList1.Items.Add(rdr.GetString(0));
+                    type1ip = rdr.GetString(0);
+                }
+
+            }
+
+            Label4.Text = "You choose:" + DropDownList1.SelectedItem.Text;
+            int i = 0;
+
+            i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0',1)");
+            Label4.Text = "Not updated" + i;
+            DataSend ds = new DataSend(type1ip, "5212");
+            ds.sendData("  " + i.ToString());
+            id = i;
+            Button2.Visible = true;
+            
+            /*
             if (DropDownList1.SelectedItem.Text == "Sum")
             {
+                
+                rdr = db.SelectDataFromDatabase("select ipaddress from compilertype where name='Sum'");
+                if (rdr.HasRows)
+                {
+
+                    if (rdr.Read())
+                    {
+                        //Label6.Text = "Data Result" + rdr.GetString(0);
+                        //DropDownList1.Items.Add(rdr.GetString(0));
+                        type1ip = rdr.GetString(0);
+                    }
+
+                }
+
                 Label4.Text = "You choose:" + DropDownList1.SelectedItem.Text;
                 int i = 0;
-                Database db = new Database(this);
+                
                 i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0',1)");
                 Label4.Text = "Not updated" + i;
                 DataSend ds = new DataSend(type1ip, "5212");
@@ -47,10 +99,22 @@ namespace Manager
             }
             if (DropDownList1.SelectedItem.Text == "Sub")
             {
+                rdr = db.SelectDataFromDatabase("select ipaddress from compilertype where name='Sub'");
+                if (rdr.HasRows)
+                {
+
+                    if (rdr.Read())
+                    {
+                        //Label6.Text = "Data Result" + rdr.GetString(0);
+                        //DropDownList1.Items.Add(rdr.GetString(0));
+                        type2ip = rdr.GetString(0);
+                    }
+
+                }
                 
                 Label4.Text = "You choose:" + DropDownList1.SelectedItem.Text;
                 int i = 0;
-                Database db = new Database(this);
+                db = new Database(this);
                 //i = db.InsertIntoDatabase("insert into crawler(value1,value2,result,operation) values(" + TextBox1.Text + "," + TextBox2.Text + ",0,2)");
                 i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0',2)");
                 Label4.Text = "Not updated" + i;
@@ -61,9 +125,21 @@ namespace Manager
             }
             if (DropDownList1.SelectedItem.Text == "Multi")
             {
+                rdr = db.SelectDataFromDatabase("select ipaddress from compilertype where name='Multi'");
+                if (rdr.HasRows)
+                {
+
+                    if (rdr.Read())
+                    {
+                        //Label6.Text = "Data Result" + rdr.GetString(0);
+                        //DropDownList1.Items.Add(rdr.GetString(0));
+                        type3ip = rdr.GetString(0);
+                    }
+
+                }
                 Label4.Text = "You choose:" + DropDownList1.SelectedItem.Text;
                 int i = 0;
-                Database db = new Database(this);
+                db = new Database(this);
                 //i = db.InsertIntoDatabase("insert into crawler(value1,value2,result,operation) values(" + TextBox1.Text + "," + TextBox2.Text + ",0,3)");
                 i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0',3)");
                 Label4.Text = "Not updated" + i;
@@ -74,9 +150,21 @@ namespace Manager
             }
             if (DropDownList1.SelectedItem.Text == "Div")
             {
+                rdr = db.SelectDataFromDatabase("select ipaddress from compilertype where name='Div'");
+                if (rdr.HasRows)
+                {
+
+                    if (rdr.Read())
+                    {
+                        //Label6.Text = "Data Result" + rdr.GetString(0);
+                        //DropDownList1.Items.Add(rdr.GetString(0));
+                        type4ip = rdr.GetString(0);
+                    }
+
+                }
                 Label4.Text = "You choose:" + DropDownList1.SelectedItem.Text;
                 int i = 0;
-                Database db = new Database(this);
+                db = new Database(this);
                 //i = db.InsertIntoDatabase("insert into crawler(value1,value2,result,operation) values(" + TextBox1.Text + "," + TextBox2.Text + ",0,4)");
                 i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0',4)");
                 Label4.Text = "Not updated" + i;
@@ -84,7 +172,7 @@ namespace Manager
                 ds.sendData("  " + i.ToString());
                 id = i;
                 Button2.Visible = true;
-            }
+            }*/
         }
 
         protected void Button2_Click(object sender, EventArgs e)

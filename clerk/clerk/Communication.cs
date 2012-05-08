@@ -96,6 +96,7 @@ class Communication
         Process compiler = new Process();
         compiler.StartInfo.FileName = @"D:\tcc\tcc\tcc.exe";
         //ClamScan.StartInfo.Arguments = "--no-summary --move=" + (char)(34) + virtualPath + "quarantene" + (char)(34) + " " + (char)(34) + FileScan + (char)(34);
+
         compiler.StartInfo.Arguments = fileLoc;
         compiler.StartInfo.CreateNoWindow = true;
         compiler.StartInfo.WindowStyle = ProcessWindowStyle.Normal;

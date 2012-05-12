@@ -15,6 +15,11 @@ class Database
         em1 = em;
         // TODO: Complete member initialization
     }
+    public Database()
+    {
+       // em1 = em;
+        // TODO: Complete member initialization
+    }
     public int InsertIntoDatabase(String sql)
     {
             
@@ -22,7 +27,7 @@ class Database
         try
         {
 
-            //string connStr = "server=172.16.52.124;port=3306;user=root;database=crawler;password=a;";
+            //string connStr = "server=172.16.58.71;port=3306;user=root;database=crawler;password=a;";
             string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password=internet;";
 
             MySqlCommand cmd;
@@ -38,13 +43,13 @@ class Database
 
 
 
-            em1.Status("No Error : Data" + id);
+            //em1.Status("No Error : Data" + id);
             return (id);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            em1.Status(ex.ToString());
+            //em1.Status(ex.ToString());
         }
         return 0;
     }
@@ -53,7 +58,7 @@ class Database
         try
         {
 
-            //string connStr = "server=172.16.52.124;port=3306;user=root;database=crawler;password=a;";
+            //string connStr = "server=172.16.58.71;port=3306;user=root;database=crawler;password=a;";
             string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password=internet;";
             MySqlCommand cmd;
             MySqlDataReader rdr;
@@ -71,7 +76,7 @@ class Database
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            em1.Status(ex.ToString());
+            //em1.Status(ex.ToString());
         }
         return null;
     }

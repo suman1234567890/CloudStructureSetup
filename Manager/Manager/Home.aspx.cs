@@ -14,7 +14,7 @@ namespace Manager
         //String type2ip = "172.16.52.126";
         //String type3ip = "172.16.52.126";
         //String type4ip = "172.16.52.126";
-        String type1ip = "127.0.0.2";
+        String type1ip = "127.0.0.8";
         //String type2ip = "127.0.0.1";
         //String type3ip = "127.0.0.1";
         //String type4ip = "127.0.0.1";
@@ -52,18 +52,17 @@ namespace Manager
 
                 if (rdr.Read())
                 {
-                    //Label6.Text = "Data Result" + rdr.GetString(0);
-                    //DropDownList1.Items.Add(rdr.GetString(0));
+                    
                     type1ip = rdr.GetString(0);
                 }
 
             }
 
-            Label4.Text = "You choose:" + DropDownList1.SelectedItem.Text;
+            Label4.Text = "Your chose:" + DropDownList1.SelectedItem.Text+DropDownList1.SelectedIndex.ToString();
             int i = 0;
 
-            i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0',1)");
-            Label4.Text = "Not updated" + i;
+            i = db.InsertIntoDatabase("insert into crawler(prog,result,operation) values('" + TextBox1.Text + "','0'," + (DropDownList1.SelectedIndex+1).ToString() + ")");
+            
             DataSend ds = new DataSend(type1ip, "5212");
             ds.sendData("  " + i.ToString());
             id = i;

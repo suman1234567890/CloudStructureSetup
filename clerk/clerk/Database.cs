@@ -20,9 +20,9 @@ class Database
         try
         {
 
-            //string connStr = "server=172.16.52.124;port=3306;user=root;database=crawler;password=a;";
+            string connStr = "server=172.16.58.71;port=3306;user=root;database=crawler;password=a;";
 
-            string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password='internet';";
+            //string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password='internet';";
             MySqlCommand cmd;
             
             //string sql = "";
@@ -50,8 +50,8 @@ class Database
         try
         {
 
-           string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password='internet';";
-            //string connStr = "server=172.16.52.124;port=3306;user=root;database=crawler;password=a;";
+           //string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password='internet';";
+            string connStr = "server=172.16.58.71;port=3306;user=root;database=crawler;password=a;";
 
             MySqlCommand cmd;
             MySqlDataReader rdr;
@@ -79,8 +79,8 @@ class Database
         try
         {
 
-            string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password=internet;";
-            //string connStr = "server=172.16.52.124;port=3306;user=root;database=crawler;password=a;";
+            //string connStr = "server=208.11.220.249;port=3306;user=suman123456789;database=tgmc11cfb;password=internet;";
+            string connStr = "server=172.16.58.71;port=3306;user=root;database=crawler;password=a;";
 
             MySqlCommand cmd;
             

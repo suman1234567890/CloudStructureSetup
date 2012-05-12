@@ -28,6 +28,7 @@ class Communication
 
         }
         throw new NotImplementedException();
+       
     }
     void computeIt(String data)
     {
@@ -41,38 +42,43 @@ class Communication
                 {
                     n.AddToTextBox("Data Retrived : " + rdr.GetString(0) + rdr.GetInt32(1));
                     //int res = rdr.GetInt32(0) + rdr.GetInt32(1);
-                    String res=dojob(rdr.GetString(0));
+                    String res=dojobC(rdr.GetString(0));
                     db.UpdateIntoDatabase("update crawler set result='" + res + "' where id=" + data);
                 }
                 if (rdr.GetInt32(1) == 2)
                 {
-                    n.AddToTextBox("Data Retrived : " + rdr.GetInt32(0) + rdr.GetInt32(1));
+                    n.AddToTextBox("Data Retrived : " + rdr.GetString(0) + rdr.GetInt32(1));
                     //int res = rdr.GetInt32(0) - rdr.GetInt32(1);
-                    String res = dojob(rdr.GetString(0));
-                    db.UpdateIntoDatabase("update crawler set result=" + res + " where id=" + data);
+                    String res = dojobJava(rdr.GetString(0));
+                    n.AddToTextBox("Result"+res);
+                    db.UpdateIntoDatabase("update crawler set result='" + res + "' where id=" + data);
                 }
                 if (rdr.GetInt32(1) == 3)
                 {
                     n.AddToTextBox("Data Retrived : " + rdr.GetInt32(0) + rdr.GetInt32(1));
                     //int res = rdr.GetInt32(0) * rdr.GetInt32(1);
-                    String res = dojob(rdr.GetString(0));
-                    db.UpdateIntoDatabase("update crawler set result=" + res + " where id=" + data);
+                    String res = dojobC(rdr.GetString(0));
+                    db.UpdateIntoDatabase("update crawler set result='" + res + "' where id=" + data);
                 }
                 if (rdr.GetInt32(1) == 4)
                 {
                     n.AddToTextBox("Data Retrived : " + rdr.GetInt32(0) + rdr.GetInt32(1));
                     //int res = rdr.GetInt32(0) / rdr.GetInt32(1);
-                    String res = dojob(rdr.GetString(0));
-                    db.UpdateIntoDatabase("update crawler set result=" + res + " where id=" + data);
+                    String res = dojobC(rdr.GetString(0));
+                    db.UpdateIntoDatabase("update crawler set result='" + res + "' where id=" + data);
+                }
+                else
+                {
+                    n.AddToTextBox("not selected");
                 }
 
             }
         }
         
     }
-    String dojob(String prog)
+    String dojobC(String prog)
     {
-        String fileLoc = @"sample1.c";
+        String fileLoc = @"D:\ABC\sample1.c";
         if (!File.Exists(fileLoc))
         {
             FileStream fs = null;
@@ -94,7 +100,64 @@ class Communication
 
 
         Process compiler = new Process();
-        compiler.StartInfo.FileName = @"D:\tcc\tcc\tcc.exe";
+        compiler.StartInfo.FileName = @"D:\IBM\tcc\tcc.exe";
+        //ClamScan.StartInfo.Arguments = "--no-summary --move=" + (char)(34) + virtualPath + "quarantene" + (char)(34) + " " + (char)(34) + FileScan + (char)(34);
+
+        compiler.StartInfo.Arguments = @"-o D:\ABC\sample1.exe -run "+fileLoc;
+        compiler.StartInfo.CreateNoWindow = true;
+        compiler.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+        compiler.StartInfo.RedirectStandardOutput = true;
+        compiler.StartInfo.RedirectStandardError = true;
+        compiler.StartInfo.UseShellExecute = false;
+        compiler.EnableRaisingEvents = true;
+        compiler.Start();
+        compiler.WaitForExit();
+        String soutput = compiler.StandardError.ReadToEnd();
+
+        if (soutput == "")
+        {
+            Process runobj = new Process();
+            runobj.StartInfo.FileName = @"D:\ABC\sample1.exe";
+            runobj.StartInfo.Arguments = fileLoc;
+            runobj.StartInfo.CreateNoWindow = true;
+            runobj.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            runobj.StartInfo.RedirectStandardOutput = true;
+            runobj.StartInfo.RedirectStandardError = true;
+            runobj.StartInfo.UseShellExecute = false;
+            runobj.EnableRaisingEvents = true;
+            runobj.Start();
+            runobj.WaitForExit();
+            soutput = runobj.StandardError.ReadToEnd();
+            soutput += runobj.StandardOutput.ReadToEnd();
+        }
+         return soutput;
+
+    }
+    String dojobJava(String prog)
+    {
+        String fileLoc = @"D:\ABC\Main.java";
+        if (!File.Exists(fileLoc))
+        {
+            FileStream fs = null;
+            using (fs = File.Create(fileLoc))
+            {
+
+            }
+        }
+        // Write the content of the file from the text box.
+        if (File.Exists(fileLoc))
+        {
+
+            using (StreamWriter sw = new StreamWriter(fileLoc))
+            {
+                sw.Write(prog);
+            }
+
+        }
+
+
+        Process compiler = new Process();
+        compiler.StartInfo.FileName = @"D:\IBM\Java60\Java\bin\javac.exe";
         //ClamScan.StartInfo.Arguments = "--no-summary --move=" + (char)(34) + virtualPath + "quarantene" + (char)(34) + " " + (char)(34) + FileScan + (char)(34);
 
         compiler.StartInfo.Arguments = fileLoc;
@@ -111,8 +174,8 @@ class Communication
         if (soutput == "")
         {
             Process runobj = new Process();
-            runobj.StartInfo.FileName = @"sample1.exe";
-            runobj.StartInfo.Arguments = fileLoc;
+            runobj.StartInfo.FileName = @"D:\IBM\Java60\bin\java.exe";
+            runobj.StartInfo.Arguments = @"-classpath D:\ABC\ Main";
             runobj.StartInfo.CreateNoWindow = true;
             runobj.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             runobj.StartInfo.RedirectStandardOutput = true;
@@ -124,7 +187,7 @@ class Communication
             soutput = runobj.StandardError.ReadToEnd();
             soutput += runobj.StandardOutput.ReadToEnd();
         }
-         return soutput;
+        return ("javaoutput :"+soutput);
 
     }
 
